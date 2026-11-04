@@ -2,6 +2,8 @@
 
 台账独立于技能和单个产品，所有产品／项目共用。默认位置：`~/Documents/Codex/小红书笔记台账`。技能中不写具体产品资料；台账只按任务需要记录产品标识、来源和使用反馈。
 
+技能自带的 [style-baseline.md](style-baseline.md) 提供可迁移的基础口吻，外部风格资料和动态台账是补充。新设备没有台账时，`show` 返回空记录，首次 `merge` 自动建立台账，不影响先找笔记或写作。要延续哪些原文已经用过等历史，才需要迁移旧台账；不要把没有旧记录说成必须重新训练风格。
+
 ## 文件与操作
 
 - `ledger.json`：笔记、模板与使用记录的唯一可编辑数据来源。
@@ -12,9 +14,11 @@
 
 本技能附有 `scripts/ledger.py`，仅用 Python 标准库。先用 `show` 阅读；更新时准备 JSON 增量文件，用 `merge` 合并；合并会校验引用并重建视图。可用 `--root` 指定其他路径，但不要在不同项目悄悄创建互不关联的新台账。
 
+在本技能目录运行（输入文件用实际路径）：
+
 ```sh
-python3 /Users/can/.codex/skills/xhs-note-finder/scripts/ledger.py show
-python3 /Users/can/.codex/skills/xhs-note-finder/scripts/ledger.py merge --input /absolute/path/update.json
+python3 scripts/ledger.py show
+python3 scripts/ledger.py merge --input /absolute/path/update.json
 ```
 
 脚本位置随技能安装目录调整。不要重建或覆盖已有台账来回避冲突；相同 ID 递归合并，列表按传入值替换，事件按 ID 去重。
