@@ -1,0 +1,4 @@
+interface:
+  display_name: "小红书对标笔记查找"
+  short_description: "按产品需求生成搜索词，查找、精读、筛选同类及跨行业对标笔记，并交付可用参考资料"
+  default_prompt: "使用 $xhs-note-finder，根据当前产品资料查找并筛选3篇适合迁移的真实笔记，给出原文链接和选择理由，先不改写。"
