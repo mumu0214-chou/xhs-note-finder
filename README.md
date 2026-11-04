@@ -6,8 +6,10 @@
 
 台账支持事件重试去重、来源规范化、版本保留、续写计数、限定对象的反馈、模板复查、并发写入、旧数据迁移和手动导出。每个技能自带同版脚本，默认连接本机 `~/Documents/Codex/小红书笔记台账`；可用 `XHS_LEDGER_ROOT` 或 `--root` 指定共享位置。记录由技能执行阶段主动调用，不是后台监听；跨设备自动同步不包含在内。
 
-技能文件位于 `skills/xhs-note-finder`。可请求 Codex 使用 `$skill-installer` 从本仓库安装该目录；私有仓库需要访问权限。运行依赖 Python 3.9+ 标准库，适用于 macOS/Linux。
+技能文件位于 `skills/xhs-note-finder`。可请求 Codex 使用 `$skill-installer` 从本仓库安装该目录；私有仓库需要访问权限。运行依赖 Python 3.9+ 标准库，适用于 Windows/macOS/Linux。
 
 随包 `references/style-baseline.md` 提供风格基础，个人台账、产品快照、来源全文、成稿和历史反馈不上传到本仓库。没有旧台账也能工作；继续原使用历史时再迁移台账。
 
 在技能目录运行 `python3 tests/test_ledger.py` 验证台账行为。实际操作接口见 `references/ledger.md`。两个技能中的 ledger.py、ledger.md 和测试应保持同版。
+
+Windows 默认目录为当前用户主目录下的 `Documents\Codex\小红书笔记台账`（通常是 `C:\Users\用户名\Documents\Codex\小红书笔记台账`），首次记录自动创建；也可统一指定其他目录。Windows 可用 `py -3` 或已验证的 `python` 命令，支持中文路径、空格、表情与 UTF-8 BOM 输入。目录不自动跟随 OneDrive 文档重定向。仓库 Actions 包含 Windows/Linux 上 Python 3.9 与 3.13 的台账测试。
